@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VanLife Support Request</title>
+  <style>
+    @keyframes sway {
+      0%, 100% { transform: translateX(0px) rotate(0deg); }
+      50% { transform: translateX(10px) rotate(2deg); }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+    
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 5px #d97706, 0 0 10px #d97706, 0 0 15px #d97706; }
+      50% { box-shadow: 0 0 10px #d97706, 0 0 20px #d97706, 0 0 30px #d97706; }
+    }
+    
+    @keyframes typewriter {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    
+
+    
+    @keyframes leaf-fall {
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    body {
+      background: linear-gradient(135deg, #1f2937 0%, #374151 50%, #4b5563 100%);
+      color: #f9fafb;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Animated Nature Elements */
+    .nature-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .leaf {
+      position: absolute;
+      color: #10b981;
+      font-size: 20px;
+      animation: leaf-fall 8s linear infinite;
+    }
+
+    .leaf:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .leaf:nth-child(2) { left: 20%; animation-delay: 2s; }
+    .leaf:nth-child(3) { left: 30%; animation-delay: 4s; }
+    .leaf:nth-child(4) { left: 40%; animation-delay: 1s; }
+    .leaf:nth-child(5) { left: 50%; animation-delay: 3s; }
+    .leaf:nth-child(6) { left: 60%; animation-delay: 5s; }
+    .leaf:nth-child(7) { left: 70%; animation-delay: 2.5s; }
+    .leaf:nth-child(8) { left: 80%; animation-delay: 4.5s; }
+    .leaf:nth-child(9) { left: 90%; animation-delay: 1.5s; }
+    .leaf:nth-child(10) { left: 95%; animation-delay: 3.5s; }
+
+    /* Floating VanLife Elements */
+    .vanlife-elements {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .mountain {
+      position: absolute;
+      animation: float 10s ease-in-out infinite;
+    }
+
+    .mountain:nth-child(1) {
+      top: 20%;
+      right: 15%;
+      animation-delay: 0s;
+    }
+
+    .mountain:nth-child(2) {
+      top: 60%;
+      left: 10%;
+      animation-delay: 3s;
+    }
+
+    .campfire {
+      position: absolute;
+      top: 75%;
+      left: 80%;
+      animation: sway 6s ease-in-out infinite;
+      opacity: 0.7;
+    }
+
+    /* Main Content */
+    .content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      background: rgba(31, 41, 55, 0.9);
+      padding: 40px;
+      border-radius: 20px;
+      border: 2px solid rgba(217, 119, 6, 0.4);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 30px rgba(217, 119, 6, 0.3);
+
+    }
+
+    .title {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      background: linear-gradient(45deg, #d97706, #f59e0b, #fbbf24);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: glow 3s ease-in-out infinite;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: #d1d5db;
+      margin-bottom: 30px;
+      font-style: italic;
+    }
+
+    .input-container {
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    input {
+      padding: 15px 20px;
+      width: 350px;
+      border: 2px solid rgba(217, 119, 6, 0.5);
+      border-radius: 10px;
+      font-size: 1.1rem;
+      background: rgba(31, 41, 55, 0.9);
+      color: #f9fafb;
+      transition: all 0.3s ease;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #d97706;
+      box-shadow: 0 0 20px rgba(217, 119, 6, 0.6);
+      animation: glow 2s ease-in-out infinite;
+    }
+
+    input::placeholder {
+      color: rgba(209, 213, 219, 0.6);
+      animation: typewriter 3s steps(40, end) infinite;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(45deg, #d97706, #f59e0b);
+      color: white;
+      cursor: pointer;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(217, 119, 6, 0.4);
+      background: linear-gradient(45deg, #f59e0b, #fbbf24);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    /* Particle effect for button */
+    button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    button:hover::before {
+      left: 100%;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .content {
+        padding: 20px;
+        margin: 20px;
+      }
+      
+      input {
+        width: 280px;
+      }
+      
+      .title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated Nature Background -->
+  <div class="nature-background">
+    <div class="leaf">🍃</div>
+    <div class="leaf">🌿</div>
+    <div class="leaf">🍂</div>
+    <div class="leaf">🌱</div>
+    <div class="leaf">🍃</div>
+    <div class="leaf">🌿</div>
+    <div class="leaf">🍂</div>
+    <div class="leaf">🌱</div>
+    <div class="leaf">🍃</div>
+    <div class="leaf">🌿</div>
+  </div>
+
+  <!-- Floating VanLife Elements -->
+  <div class="vanlife-elements">
+    <svg class="mountain" width="80" height="60" viewBox="0 0 80 60">
+      <polygon points="0,60 20,20 40,40 60,10 80,60" fill="url(#mountain1)" />
+      <defs>
+        <linearGradient id="mountain1">
+          <stop offset="0%" stop-color="#6b7280" />
+          <stop offset="50%" stop-color="#9ca3af" />
+          <stop offset="100%" stop-color="#d1d5db" />
+        </linearGradient>
+      </defs>
+    </svg>
+    
+    <svg class="mountain" width="60" height="50" viewBox="0 0 60 50">
+      <polygon points="0,50 15,15 30,25 45,5 60,50" fill="url(#mountain2)" />
+      <defs>
+        <linearGradient id="mountain2">
+          <stop offset="0%" stop-color="#4b5563" />
+          <stop offset="50%" stop-color="#6b7280" />
+          <stop offset="100%" stop-color="#9ca3af" />
+        </linearGradient>
+      </defs>
+    </svg>
+    
+    <div class="campfire">
+      <svg width="40" height="40" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="8" fill="url(#fire)" />
+        <defs>
+          <radialGradient id="fire">
+            <stop offset="0%" stop-color="#fbbf24" />
+            <stop offset="50%" stop-color="#f59e0b" />
+            <stop offset="100%" stop-color="#d97706" />
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h1 class="title">Welcome to Vanlife</h1>
+    <p class="subtitle">Adventure awaits. Let us help you on your journey.</p>
+    <div class="input-container">
+      <input id="userInput" type="text" placeholder="Tell us about your van life adventure..." />
+    </div>
+    <button onclick="startRedirect()">Start Your Journey</button>
+  </div>
+
+  <script>
+    function startRedirect() {
+      const input = document.getElementById('userInput').value.trim();
+      const defaultMessage = 'Please take back that hat';
+      const body = encodeURIComponent(input || defaultMessage);
+      const url = `https://bcrw.apple.com/messages/api/messageprofiles/redirecthelper?service=iMessage&recipient=urn:biz:6c01cb67-fbbc-4600-a131-8bac69183e96&biz-intent-id=vanlife&biz-group-id=Van_Renter&body=${body}`;
+      
+      // Add nature transition effect
+      document.body.style.transition = 'all 0.5s ease';
+      document.body.style.filter = 'brightness(1.3) sepia(0.3)';
+      
+      setTimeout(() => {
+        window.location.href = url;
+      }, 500);
+    }
+
+    // Add interactive nature effects
+    document.addEventListener('DOMContentLoaded', function() {
+      const input = document.getElementById('userInput');
+      
+      input.addEventListener('focus', function() {
+        this.style.transform = 'scale(1.02)';
+      });
+      
+      input.addEventListener('blur', function() {
+        this.style.transform = 'scale(1)';
+      });
+      
+      // Add more falling leaves on interaction
+      input.addEventListener('keydown', function() {
+        if (Math.random() > 0.7) {
+          const leaf = document.createElement('div');
+          leaf.className = 'leaf';
+          leaf.style.left = Math.random() * 100 + '%';
+          leaf.style.animationDelay = '0s';
+          leaf.innerHTML = ['🍃', '🌿', '🍂', '🌱'][Math.floor(Math.random() * 4)];
+          document.querySelector('.nature-background').appendChild(leaf);
+          
+          setTimeout(() => {
+            leaf.remove();
+          }, 8000);
+        }
+      });
+    });
+  </script>
+</body>
+</html> 
